@@ -5,6 +5,7 @@ import { Button, HStack, Image, List, ListItem, Text } from "@chakra-ui/react";
 
 interface Props {
   onSelectGenre: (genre: Genre) => void;
+  selectedGenre: Genre | null;
 }
 const GenreList = (props: Props) => {
   const { data } = useGenre();
@@ -21,6 +22,7 @@ const GenreList = (props: Props) => {
               src={g.image_background}
             ></Image>
             <Button
+              color={g.id === props.selectedGenre?.id ? "green" : ""}
               fontSize="lg"
               variant="link"
               onClick={() => props.onSelectGenre(g)}
