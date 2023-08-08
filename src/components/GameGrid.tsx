@@ -1,16 +1,14 @@
 import { SimpleGrid, Text } from "@chakra-ui/react";
 import useGames, { Platform } from "../hooks/useGames";
 import GameCard from "./GameCard";
-import { Genre } from "../hooks/useGenre";
-import usePlatform from "../hooks/usePlatform";
+import { GameQuery } from "../App";
 
 interface Props {
-  selectedGenre: Genre | null;
-  selectedPlatform: Platform | null;
+  gameQuery: GameQuery;
 }
 
 const GameGrid = (props: Props) => {
-  const { data, error } = useGames(props.selectedGenre, props.selectedPlatform);
+  const { data, error } = useGames(props.gameQuery);
   return (
     <>
       {error && <Text>{error}</Text>}
